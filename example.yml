@@ -25,9 +25,6 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Make request to thomaswsmith for IP detection
-        run: curl https://www.thomaswsmith.com/
-
       - name: Install Python packages
         run: pip install -r requirements.txt
 
@@ -55,4 +52,4 @@ jobs:
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
           SNOWFLAKE_SCHEMA: ${{ secrets.SNOWFLAKE_SCHEMA }}
         run: |
-          snow --config-file $GITHUB_WORKSPACE/connections.toml sql -q "ALTER GIT REPOSITORY cicd_streamlit_app FETCH"
+          snow --config-file $GITHUB_WORKSPACE/connections.toml sql -q "ALTER GIT REPOSITORY streamlit_cicd FETCH"
