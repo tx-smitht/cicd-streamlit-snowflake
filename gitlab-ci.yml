@@ -22,9 +22,7 @@ deploy:
     - echo "schema = \"$SNOWFLAKE_SCHEMA\"" >> connections.toml
     - echo "warehouse = \"$SNOWFLAKE_WAREHOUSE\"" >> connections.toml
     - chmod 0600 "connections.toml"
-    - cat connections.toml
-    - echo "$SNOWFLAKE_ACCOUNT"
-
+# Dont forget to have variables called SNOWFLAKE_USER, SNOWFLAKE_ROLE and SNOWFLAKE_PASSWORD
     - snow --config-file connections.toml sql -q "ALTER GIT REPOSITORY cicd_streamlit_app_gitlab FETCH"
   environment:
     name: production
